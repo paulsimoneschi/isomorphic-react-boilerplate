@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "babel src --out-dir ./lib --copy-files",
+    "serve:dev": "node lib/server.js",
+    "start": "npm run build && npm run serve:dev"
   },
   "repository": {
     "type": "git",
