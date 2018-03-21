@@ -10,6 +10,17 @@
         "jsx-a11y",
         "import"
     ],
+    "settings": {
+        "import/resolver": {
+            "node": {
+                "moduleDirectory": [
+                    "node_modules",
+                    "src",
+                    "."
+                ]
+            }
+        }
+    },
     "parserOptions": {
         "ecmaFeatures": {
             "jsx": true

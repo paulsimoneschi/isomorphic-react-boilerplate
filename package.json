@@ -5,9 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "babel src --out-dir ./lib --copy-files",
+    "build:client": "webpack --config webpack.config.js",
+    "build:server": "rm -rf lib && babel src --out-dir ./lib --copy-files",
     "serve:dev": "node lib/server.js",
-    "start": "npm run build && npm run serve:dev"
+    "start": "npm run build:server && npm run build:client && npm run serve:dev"
   },
   "repository": {
     "type": "git",
@@ -22,6 +23,8 @@
   "devDependencies": {
     "babel": "^6.23.0",
     "babel-cli": "^6.26.0",
+    "babel-eslint": "^8.1.2",
+    "babel-loader": "^7.1.4",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
     "eslint": "^4.14.0",
@@ -35,6 +38,7 @@
     "dotenv": "^4.0.0",
     "express": "^4.16.2",
     "react": "^16.2.0",
-    "react-dom": "^16.2.0"
+    "react-dom": "^16.2.0",
+    "react-router-dom": "^4.2.2"
   }
 }

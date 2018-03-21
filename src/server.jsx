@@ -2,23 +2,28 @@ import Express from 'express';
 
 import React from 'react';
 import ReactDOM from 'react-dom/server';
+import { StaticRouter } from 'react-router-dom';
 
-const { NODE_PORT } = process.env;
+import App from './components/App';
+import Html from './containers/Html';
 
 const server = new Express();
 
-server.get('/', (req, res) => {
-	res.status(200);
-	res.send('Big time!');
-})
+server.use(Express.static('dist'));
 
-server.get('/react', (req, res) => {
-	res.status(200);
-  res.send(
-  	ReactDOM.renderToString(
-			<h1>Big time!</h1>
-  	)
+server.get('*', (req, res) => {
+  const context = {};
+
+  const appHtml = ReactDOM.renderToString(
+    <StaticRouter location={req.url} context={context}>
+      <App />
+    </StaticRouter>,
   );
+
+  const html = ReactDOM.renderToString(<Html component={appHtml} />);
+
+  res.status(200);
+  res.send(html);
 });
 
-server.listen(3000, () => console.log('Big time app listening on port 3000!'))
+server.listen(3000, () => console.log('Big time app listening on port 3000!'));
