@@ -4,8 +4,8 @@ import React from 'react';
 import ReactDOM from 'react-dom/server';
 import { StaticRouter } from 'react-router-dom';
 
-import App from './components/App';
-import Html from './containers/Html';
+import App from 'components/App';
+import Html from 'containers/Html';
 
 const server = new Express();
 
