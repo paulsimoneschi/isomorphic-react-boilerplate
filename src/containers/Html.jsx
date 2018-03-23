@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Routes from '../routes';
 
 export default function Html(props) {
- const { component } = props;
+const { component } = props;
 
   return (
     <html lang="en">
